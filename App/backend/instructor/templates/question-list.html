@@ -1,0 +1,21 @@
+{% extends "layout.html" %} {%load static%}
+
+{% block title %} 
+    Question List 
+{% endblock %} 
+
+{%block content%}
+<h1>Question List</h1>
+
+<ul>
+  {% for question in questions %}
+  <a href="/question-detail/{{question.id}}">
+  <li>
+    Prompt: {{question.prompt}}
+    category: {{question.category}} 
+    difficulty: {{question.difficulty}}
+  </li>
+  </a>
+  {% endfor %}
+</ul>
+{% endblock %}

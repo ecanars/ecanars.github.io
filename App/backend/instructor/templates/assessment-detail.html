@@ -1,0 +1,32 @@
+{% extends "layout.html" %} {%load static%} {% block title %} Assessment Detail {% endblock %}
+{%block content %}
+<h1>Assessment detail</h1>
+
+<p>Name: {{assessment.name}}</p>
+<p>Course: {{assessment.course}}</p>
+<p>Question Number: {{question_count}}</p>
+<p>Questions:</p>
+<ul>
+	{% for question in questions %}
+	<li>
+		<a href="/question-detail/{{question.id}}"
+			>Prompt: {{question.prompt}}, Difficulty: {{question.difficulty}}</a
+		>
+	</li>
+	{% endfor %}
+</ul>
+<a href="/assessment-add-question/{{assessment.assessment_id}}">Add Questions to assessment</a>
+<form method="post">
+	{% csrf_token %}
+	<input type="submit" value="Delete Assessment" />
+</form>
+
+<form action="{% url 'export_assessment' assessment.pk %}" method="post">
+	{% csrf_token %}
+	<select name="format">
+		<option value="pdf">PDF</option>
+		<option value="docx">DOCX</option>
+	</select>
+	<button type="submit">Export Assessment</button>
+</form>
+{% endblock %}

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+{%load static%}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profiles</title>
+    {% block style %}
+    <link rel="stylesheet" href="{% static 'css/layout.css' %}" />
+    {% endblock style %}
+  </head>
+  <body>
+    <nav>
+      <a href="{% url 'showstudent' %}"> Home </a>
+    </nav>
+    <main>{%block content%} content {%endblock%}</main>
+  </body>
+</html>

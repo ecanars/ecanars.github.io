@@ -1,0 +1,21 @@
+{% extends "layout.html" %} {% block title %} Show Profile {% endblock title %}
+{% load static %}
+{% block content %}
+<div class="profile-container">
+  <button link:></button>
+  <h1>Student Profile</h1>
+  <a href="{% url 'edit' %}" class="btn">Edit Profile</a>
+  <div class="profile-info">
+    <img
+      src="{% static 'images/profile_picture.jpg' %}"
+      alt="Student Photo"
+      class="profile-photo"
+    />
+    <p><strong>Name:</strong> {{ student.name }}</p>
+    <p><strong>Student ID:</strong> {{ student.student_id }}</p>
+    <p><strong>Department:</strong> {{ student.department }}</p>
+    <p><strong>Year:</strong> {{ student.year }}</p>
+    <p><strong>Email:</strong> {{ student.email }}</p>
+  </div>
+</div>
+{% endblock content %}

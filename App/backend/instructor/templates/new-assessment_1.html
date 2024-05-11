@@ -1,0 +1,23 @@
+{% extends "layout.html" %} {%load static%}
+
+{% block title %}
+    New Assessment
+{% endblock %}
+
+{% block content %}
+    <h2>New Assessment</h2>
+    <form method="post">
+        {% csrf_token %}
+        <label for="name">Enter a title:</label>
+        <input type="text" name="name" id="name" required/>
+        <label for="course">Select course</label>
+        <select id="course" name="course">
+            <option value="" disabled>Select a course</option>
+            {% for course in courses %}
+            <option value={{course}}>{{course}}</option>
+            {% endfor %}
+        <input type="submit" value="Next"/>
+        <input type="reset" value="Cancel"/>
+    </form>
+    
+{% endblock %}
